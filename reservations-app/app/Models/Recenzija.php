@@ -17,4 +17,12 @@ class Recenzija extends Model
         'user_id',
         'objekat_id', 
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function objekat() {
+        return $this->belongsTo(Objekat::class);
+    }
 }

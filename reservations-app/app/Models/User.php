@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function objekti() {
+        return $this->hasMany(Objekat::class);
+    }
+
+    public function recenzije() {
+        return $this->hasMany(Recenzija::class);
+    }
 }

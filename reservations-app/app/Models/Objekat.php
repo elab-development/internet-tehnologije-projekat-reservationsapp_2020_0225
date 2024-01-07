@@ -20,4 +20,16 @@ class Objekat extends Model
         'user_id',
         'tip_objekta_id', 
     ];
+
+    public function tipObjekta() {
+        return $this->belongsTo(TipObjekta::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    
+    public function recenzije() {
+        return $this->hasMany(Recenzija::class);
+    }
 }

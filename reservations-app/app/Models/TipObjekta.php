@@ -15,4 +15,8 @@ class TipObjekta extends Model
         'naziv',
         'brojObjekataKojiSuTrenutnoOvogTipa',  
     ];
+
+    public function objekti() {
+        return $this->hasMany(Objekat::class);
+    }
 }
