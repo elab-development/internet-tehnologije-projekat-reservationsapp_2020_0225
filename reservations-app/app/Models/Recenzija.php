@@ -13,7 +13,8 @@ class Recenzija extends Model
 
     protected $fillable = [
         'vrstaRecenzije',
-        'komentarUzRecenziju', 
+        'komentarUzRecenziju',
+        'brojZvezdica', 
         'user_id',
         'objekat_id', 
     ];
