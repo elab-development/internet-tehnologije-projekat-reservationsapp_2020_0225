@@ -14,7 +14,6 @@ class PretragaController extends Controller
 {
     public function pretragaPoNazivu(Request $request)
     {
-        $user_id = Auth::user()->id; 
 
         //ADMINISTRATOR
         $jeAdmin = Auth::user()->jeAdmin;
@@ -45,6 +44,15 @@ class PretragaController extends Controller
         //vrati objekte po tipu objketa - po nazivu unesenom i paginiraj
         public function pretragaPoTipu(Request $request)
         {
+
+        //ADMINISTRATOR
+        $jeAdmin = Auth::user()->jeAdmin;
+
+        if (!$jeAdmin) {
+             return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator samo moze videti sve korisnike!'], 403);
+         }
+
+
             $nazivTipa = $request->input('naziv');
     
             $tipObjekta = TipObjekta::where('naziv', trim($nazivTipa))->first();
@@ -64,7 +72,7 @@ class PretragaController extends Controller
     
             //trenutna stranica
             $currentPage = Paginator::resolveCurrentPage();
-            $perPage = 1;
+            $perPage = 2;
             //vraca rezultate za trenutnu stranicu, sece niz objekti na osnovu formule
             //pretvara u php array sa fjom all jer to prihvata lenghtAwarePaginator
             $currentPageSearchResults = $objekti->slice(($currentPage - 1) * $perPage, $perPage)->all();
@@ -75,7 +83,7 @@ class PretragaController extends Controller
             //objekti koje su po paginate principu uradjeni
             return response()->json([
                 'message' => 'Objekti tipa ' . $nazivTipa . ' su uspesno pronadjeni: ',
-                'objekti' => PropertyResource::collection($paginatedSearchResults)
+                'objekti' => ObjekatResource::collection($paginatedSearchResults)
             ]);
         }
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\ObjekatController;
 use App\Http\Controllers\TipObjektaController;
 use App\Http\Controllers\RecenzijaController;
 
+use App\Http\Controllers\PretragaController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,6 +41,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('objekti/{id}', [ObjekatController::class, 'destroy']);
 
     Route::resource('recenzije', RecenzijaController::class);
+
+    Route::get('/pretragaObjekata/poNazivu', [PretragaController::class, 'pretragaPoNazivu']);
+    Route::get('/pretragaObjekata/poTipu', [PretragaController::class, 'pretragaPoTipu']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
