@@ -14,10 +14,26 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $data = [
             'ID --➤ ' => $this->resource->id,
             'IME --➤ ' => $this->resource->name,
             'EMAIL --➤ ' => $this->resource->email,
         ];
+
+        if ($this->resource->jeAdmin) {
+            $data['KORISNICKA ULOGA --➤ '] = 'Ovaj korisnik je administrator.';
+        }
+
+        if ($this->resource->jeMenadzerObjekata) {
+            $data['KORISNICKA ULOGA --➤ '] = 'Ovaj korisnik je menadzer objekta.';
+        }
+
+
+        if (!($this->resource->jeAdmin) && !($this->resource->jeMenadzerObjekata)) {
+            $data['KORISNICKA ULOGA --➤ '] = 'Ovo je obican korisnik.';
+        }
+
+        return $data;
+
     }
 }
