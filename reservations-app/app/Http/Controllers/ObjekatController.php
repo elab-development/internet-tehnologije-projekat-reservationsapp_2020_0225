@@ -9,6 +9,7 @@ use App\Models\Objekat;
 use App\Models\TipObjekta;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ObjekatController extends Controller
 {
@@ -39,9 +40,9 @@ class ObjekatController extends Controller
 
     //MENADZER OBJEKTA
 
-    $jeMenadzerObjekta = Auth::user()->jeMenadzerObjekta;
+    $jeMenadzerObjekata = Auth::user()->jeMenadzerObjekata;
 
-    if (!$jeMenadzerObjekta) {
+    if (!$jeMenadzerObjekata) {
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Samo menadzeri objekata mogu kreirati objekte!'], 403);
     }
 
@@ -68,7 +69,6 @@ class ObjekatController extends Controller
     $tipObjekta->brojObjekataKojiSuTrenutnoOvogTipa++;
     $tipObjekta->save();
     $objekat->user_created_id = $user_id;
-    $objekat->user_reserved_id = 0;
 
     $objekat->save();
 
@@ -88,9 +88,9 @@ class ObjekatController extends Controller
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Administrator ne moze rezervisati objekte!'], 403);
     }
 
-    $jeMenadzerObjekta = Auth::user()->jeMenadzerObjekta;
+    $jeMenadzerObjekata = Auth::user()->jeMenadzerObjekata;
 
-    if ($jeMenadzerObjekta) {
+    if ($jeMenadzerObjekata) {
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Menadzeri objekata nisu ovlasceni da prave rezervacije objekata!'], 403);
     }
     
@@ -108,16 +108,16 @@ class ObjekatController extends Controller
         $user_id = Auth::user()->id; 
 
     //MENADZER OBJEKTA
-    $jeMenadzerObjekta = Auth::user()->jeMenadzerObjekta;
+    $jeMenadzerObjekata = Auth::user()->jeMenadzerObjekata;
 
     //ADMINISTRATOR
     $jeAdmin = Auth::user()->jeAdmin;
 
-    if (!$jeMenadzerObjekta && !$jeAdmin) {
+    if (!$jeMenadzerObjekata && !$jeAdmin) {
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Samo menadzeri objekata ili administrator mogu menjati objekte!'], 403);
     }
     //DA LI JE TAJ MENADZER KREATOR OBJEKTA
-    if($jeMenadzerObjekta){
+    if($jeMenadzerObjekata){
         $objekat_user_created_id = Objekat::where('id', $id)->value('user_created_id');
 
         if($user_id != $objekat_user_created_id){
@@ -144,7 +144,6 @@ class ObjekatController extends Controller
         $objekat->opis = $request->opis;
         $objekat->grad = $request->grad;
         $objekat->adresa = $request->adresa;
-        $objekat->tip_objekta_id = $request->tip_objekta_id;
         $objekat->user_created_id = $user_id;
 
         $objekat->save();
@@ -157,16 +156,16 @@ class ObjekatController extends Controller
         $user_id = Auth::user()->id; 
     //MENADZER OBJEKTA
 
-    $jeMenadzerObjekta = Auth::user()->jeMenadzerObjekta;
+    $jeMenadzerObjekata = Auth::user()->jeMenadzerObjekata;
 
     //ADMINISTRATOR
     $jeAdmin = Auth::user()->jeAdmin;
 
-    if (!$jeMenadzerObjekta && !$jeAdmin) {
+    if (!$jeMenadzerObjekata && !$jeAdmin) {
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Samo menadzeri objekata ili administrator mogu menjati objekte!'], 403);
     }
     //DA LI JE TAJ MENADZER KREATOR OBJEKTA
-    if($jeMenadzerObjekta){
+    if($jeMenadzerObjekata){
         $objekat_user_created_id = Objekat::where('id', $id)->value('user_created_id');
 
         if($user_id != $objekat_user_created_id){
@@ -191,16 +190,16 @@ class ObjekatController extends Controller
         $user_id = Auth::user()->id; 
     //MENADZER OBJEKTA
 
-    $jeMenadzerObjekta = Auth::user()->jeMenadzerObjekta;
+    $jeMenadzerObjekata = Auth::user()->jeMenadzerObjekata;
 
     //ADMINISTRATOR
     $jeAdmin = Auth::user()->jeAdmin;
 
-    if (!$jeMenadzerObjekta && !$jeAdmin) {
+    if (!$jeMenadzerObjekata && !$jeAdmin) {
         return response()->json(['error' => 'NEOVLASCEN PRISTUP: Samo menadzeri objekata ili administrator mogu brisati objekte!'], 403);
     }
     //DA LI JE TAJ MENADZER KREATOR OBJEKTA
-    if($jeMenadzerObjekta){
+    if($jeMenadzerObjekata){
         $objekat_user_created_id = Objekat::where('id', $id)->value('user_created_id');
 
         if($user_id != $objekat_user_created_id){

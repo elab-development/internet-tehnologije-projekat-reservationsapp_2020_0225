@@ -22,9 +22,24 @@ use App\Http\Controllers\RecenzijaController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::get('objekti', [ObjekatController::class, 'index']);
+Route::get('objekti/{id}', [ObjekatController::class, 'show']); 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    
+    Route::get('users', [UserController::class, 'index']);
+    Route::delete('users/{id}', [UserController::class, 'destroy']);
+
+    Route::get('tipovi_objekata', [TipObjektaController::class, 'index']);
+
+    Route::post('objekti', [ObjekatController::class, 'store']);
+    Route::post('objekti/makeAReservation/{id}', [ObjekatController::class, 'makeAReservation']);
+    Route::put('objekti/{id}', [ObjekatController::class, 'update']); 
+    Route::patch('objekti/izmeniOpis/{id}', [ObjekatController::class, 'updateOpis']);
+    Route::delete('objekti/{id}', [ObjekatController::class, 'destroy']);
+
+    Route::resource('recenzije', RecenzijaController::class);
+
+    Route::post('logout', [AuthController::class, 'logout']);
 });
 
