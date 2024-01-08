@@ -20,7 +20,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['Registration failed:', $validator->errors()]);
+            return response()->json(['Registracija neuspesna:', $validator->errors()]);
         }
 
         $user = User::create([
@@ -32,7 +32,7 @@ class AuthController extends Controller
         $token = $user->createToken('TokenReg')->plainTextToken;
 
         $odgovor = [
-            'Poruka' => 'Successful registration!',
+            'Poruka' => 'Uspesna registracija!',
             'User: ' => $user,
             'Token: ' => $token,
         ];
@@ -53,7 +53,7 @@ class AuthController extends Controller
         }
 
         if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['Greska pri logiovanju: ' => 'Login failed, try again!']);
+            return response()->json(['Greska pri prijavi: ' => 'Pokusajte ponovo!']);
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
@@ -63,7 +63,7 @@ class AuthController extends Controller
         $token = $user->createToken('TokenLogin')->plainTextToken;
 
         $odgovor = [
-            'Poruka' => 'Successful login!',
+            'Poruka' => 'Uspesna prijava!',
             'User: ' => $user,
             'Token: ' => $token,
         ];
@@ -76,6 +76,8 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->user()->tokens()->delete();
-        return response()->json('Successful logout!.');
+        return response()->json('Uspesna odjava!');
     }
+
+    
 }
