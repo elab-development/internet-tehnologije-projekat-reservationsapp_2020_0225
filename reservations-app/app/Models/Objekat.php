@@ -17,7 +17,8 @@ class Objekat extends Model
         'grad',
         'adresa',
         'brojRecenzija',
-        'user_id',
+        'user_created_id',
+        'user_reserved_id',
         'tip_objekta_id', 
     ];
 
@@ -25,7 +26,11 @@ class Objekat extends Model
         return $this->belongsTo(TipObjekta::class);
     }
 
-    public function user() {
+    public function userCreated() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function userReserved() {
         return $this->belongsTo(User::class);
     }
     

@@ -21,7 +21,8 @@ class ObjekatResource extends JsonResource
             'GRAD --➤ ' => $this->resource->grad,
             'ADRESA --➤ ' => $this->resource->adresa,
             'BROJ OSTAVLJENIH RECENZIJA --➤ ' => $this->resource->brojRecenzija,
-            'KORISNIK KOJI IZDAJE OBJEKAT --➤ ' => new UserResource($this->resource->user),
+            'KORISNIK KOJI IZDAJE OBJEKAT --➤ ' => new UserResource($this->resource->userCreated),
+            'KORISNIK KOJI JE REZERVISAO OBJEKAT --➤ ' => new UserResource($this->resource->userReserved),
             'TIP OBJEKTA --➤ ' => new TipObjektaResource($this->resource->tipObjekta),
         ];
     }

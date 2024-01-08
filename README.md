@@ -11,7 +11,7 @@ Dati API ima 4 modela: User, Objekat, Recenzija i TipObjekta. Kardinalnosti izme
 4. Jedan **Objekat** može pripadati samo jednom **Tipu Objekta**, dok jedan **Tip Objekta** može imati vise **Objekata**.
 
 PMOV(Prosireni Model Objekti-Veze) datog Rest API-ja na kome se vide modeli i Eloquent veze između njih prikazan je na slici ispod:
-![Opis slike](https://i.postimg.cc/CKXPLxpG/RESERVATIONS-APP.png)
+![Opis slike](https://i.postimg.cc/7PSWF6N0/RESERVATIONS-APP.png)
 
 
 

@@ -15,8 +15,15 @@ class ObjekatSeeder extends Seeder
     public function run(): void
     {
         for ($i = 0; $i < 5; $i++) {
+            $userCreatedId = rand(2, 6);
+            
+            do {
+                $userReservedId = rand(2, 6);
+            } while ($userReservedId === $userCreatedId);
+
             Objekat::factory()->create([
-                'user_id' => rand(2, 6),
+                'user_created_id' => $userCreatedId,
+                'user_reserved_id'=> $userReservedId,
             ]);
         }
     }
