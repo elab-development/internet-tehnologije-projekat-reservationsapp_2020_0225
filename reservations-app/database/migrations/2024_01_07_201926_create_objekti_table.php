@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('objekti', function (Blueprint $table) {
             $table->id();
             $table->string('naziv',40);
-            $table->string('opis',40);
+            $table->string('opis',100);
             $table->string('grad',40);
             $table->string('adresa',40);
             $table->timestamps();

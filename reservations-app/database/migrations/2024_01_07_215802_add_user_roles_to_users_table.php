@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('recenzije', function (Blueprint $table) {
-            $table->string('brojZvezdica');
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('jeAdmin')->default(false);
+            $table->boolean('jeMenadzerObjekata')->default(false);
         });
     }
 
@@ -21,8 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('recenzije', function (Blueprint $table) {
-            $table ->dropColumn('brojZvezdica');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('jeAdmin');
+            $table->dropColumn('jeMenadzerObjekata');
         });
     }
 };
