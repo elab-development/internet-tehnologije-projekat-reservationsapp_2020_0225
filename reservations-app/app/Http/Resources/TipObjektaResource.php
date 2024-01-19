@@ -15,9 +15,9 @@ class TipObjektaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID --➤ ' => $this->resource->id,
-            'NAZIV TIPA --➤ ' => $this->resource->naziv,
-            'BROJ OBJEKATA KOJI SU OVOG TIPA --➤ ' => $this->resource->brojObjekataKojiSuTrenutnoOvogTipa,
+            'id' => $this->resource->id,
+            'naziv' => $this->resource->naziv,
+            'broj_objekata' => $this->resource->brojObjekataKojiSuTrenutnoOvogTipa,
         ];
     }
 }

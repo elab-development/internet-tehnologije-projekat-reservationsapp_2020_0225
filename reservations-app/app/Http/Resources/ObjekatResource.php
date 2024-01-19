@@ -15,15 +15,15 @@ class ObjekatResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID --➤ ' => $this->resource->id,
-            'NAZIV --➤ ' => $this->resource->naziv,
-            'OPIS --➤ ' => $this->resource->opis,
-            'GRAD --➤ ' => $this->resource->grad,
-            'ADRESA --➤ ' => $this->resource->adresa,
-            'BROJ OSTAVLJENIH RECENZIJA --➤ ' => $this->resource->brojRecenzija,
-            'KORISNIK KOJI IZDAJE OBJEKAT --➤ ' => new UserResource($this->resource->userCreated),
-            'KORISNIK KOJI JE REZERVISAO OBJEKAT --➤ ' => new UserResource($this->resource->userReserved),
-            'TIP OBJEKTA --➤ ' => new TipObjektaResource($this->resource->tipObjekta),
+            'id' => $this->resource->id,
+            'naziv' => $this->resource->naziv,
+            'opis' => $this->resource->opis,
+            'grad' => $this->resource->grad,
+            'adresa' => $this->resource->adresa,
+            'broj_recenzija' => $this->resource->brojRecenzija,
+            'user_created' => new UserResource($this->resource->userCreated),
+            'user_reserved' => new UserResource($this->resource->userReserved),
+            'tip_objekta' => new TipObjektaResource($this->resource->tipObjekta),
         ];
     }
 }

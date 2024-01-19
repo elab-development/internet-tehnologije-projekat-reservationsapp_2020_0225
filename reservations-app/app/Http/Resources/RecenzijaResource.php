@@ -15,12 +15,12 @@ class RecenzijaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'ID --➤ ' => $this->resource->id,
-            'VRSTA RECENZIJE --➤ ' => $this->resource->vrstaRecenzije,
-            'KOMENTAR --➤ ' => $this->resource->komentarUzRecenziju,
-            'BROJ ZVEZDICA --➤ ' => $this->resource->brojZvezdica,
-            'KORISNIK KOJI IZDAJE OBJEKAT --➤ ' => new UserResource($this->resource->user),
-            'TIP OBJEKTA --➤ ' => new ObjekatResource($this->resource->objekat),
+            'id' => $this->resource->id,
+            'vrsta_recenzije' => $this->resource->vrstaRecenzije,
+            'komentar' => $this->resource->komentarUzRecenziju,
+            'broj_zvezdica' => $this->resource->brojZvezdica,
+            'user' => new UserResource($this->resource->user),
+            'objekat' => new ObjekatResource($this->resource->objekat),
         ];
     }
 }
