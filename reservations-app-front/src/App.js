@@ -4,6 +4,7 @@ import NavBar from './components/NavBar';
 import Objects from './components/Objects';
 import React, { useState } from 'react';
 import './App.css';
+import Manager from './components/Manager';
 
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
           <Route 
             path="/objects" 
             element={<Objects  criteria={searchCriteria} loggedInUser={loggedInUser} />} 
+          />
+          <Route
+            path="/manager"
+            element={loggedInUser ? <Manager loggedInUser={loggedInUser} /> : <Navigate to="/" />}
           />
 
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSS/Object.css';
 
 
-function Object({ objectId, name, manager, text, city, image, loggedInUser, updateobject, deleteobject }) {
+function Object({ objectId, name, manager, text, city, image, loggedInUser, updateObject, deleteObject }) {
   
   //promenljiva za komentare niz i ono sto se unese kao komentar
   const [reviews, setReviews] = useState([]);
@@ -25,14 +25,14 @@ function Object({ objectId, name, manager, text, city, image, loggedInUser, upda
   };
 
   //za brisanje i update objecta
-  const [updatedText, setUpdatedText] = useState(text);
+  const [updatedName, setUpdatedName] = useState(name);
 
   const handleUpdate = () => {
-    updateobject(objectId, { manager, text: updatedText, city });
+    updateObject(objectId, { manager, name: updatedName, city });
   };
 
   const handleDelete = () => {
-    deleteobject(objectId);
+    deleteObject(objectId);
   };
 
   return (
@@ -53,22 +53,22 @@ function Object({ objectId, name, manager, text, city, image, loggedInUser, upda
         placeholder="Add a review..."
         className="review-input"
       />
-      <button onClick={handleReview}>Review</button>
+      <button onClick={handleReview}>REVIEW</button>
       <div className="object-reviews">
         {reviews.map((review, index) => (
           <p key={index}>{review}</p>
         ))}
       </div>
       {/* Dugmad za ažuriranje i brisanje */}
-      {updateobject && deleteobject && (  // Uslovni prikaz dugmadi
+      {updateObject && deleteObject && (  // Uslovni prikaz dugmadi
         <div className="update-object-section">
         <h3 className="update-object-title">UPDATE OBJECT:</h3>
         <input
           type="text"
           className="update-object-input"
-          value={updatedText}
-          onChange={(e) => setUpdatedText(e.target.value)}
-          placeholder="Enter text for object..."
+          value={updatedName}
+          onChange={(e) => setUpdatedName(e.target.value)}
+          placeholder="Enter name for object..."
         />
         <div className="update-object-buttons">
           <button className="update-button" onClick={handleUpdate}>
