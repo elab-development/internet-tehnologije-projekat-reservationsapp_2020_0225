@@ -1,0 +1,79 @@
+.nav {
+  background: linear-gradient(to bottom, black, #22222E);
+     opacity: 0.8;
+      color: white;
+      position: sticky;
+      margin: auto !important;
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      top: 0;
+      height: 100px;
+  }
+  h1 {
+    margin-left: 20px;
+    font-size: 25px;
+  }
+  
+  .nav__item{
+    background: none;
+    display: inline-block;
+    margin: 0px 40px;
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+   /* za hover preko stranica*/
+  .nav li:after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    display: block;
+    transition: all 0.5s ease;
+    bottom: 25%;
+  
+  }
+  .nav li:hover::after {
+    width: 7%;
+    height: 1px;
+    background-color: #fff;
+  } 
+  
+  /* search deo*/
+  .nav input[type=text] {
+    padding: 10px;
+    margin-top: 8px;
+    margin-right: 10px;
+    font-size: 17px;
+    border: none;
+    background-color: #393A5A;
+    color: #fff;
+  
+  }
+  
+  .nav input[type=text]:focus {
+    background-color: #706F8E;
+    border-color: #fff;
+    border: 1px;
+  }
+
+  .logout-button {
+    background-color: #393A5A; 
+    color: white; 
+    border: none; 
+    padding: 8px 12px; 
+    cursor: pointer; 
+    font-size: 18px;
+    margin-left: 20px;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .logout-button:hover {
+    background-color: #706F8E; 
+  }
