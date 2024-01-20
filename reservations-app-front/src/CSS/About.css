@@ -1,0 +1,69 @@
+.about {
+    background-image: url();
+    color: #E9E9E9;
+    padding: 40px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: transparent;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/017/320/806/original/abstract-elegant-black-background-with-golden-line-and-lighting-effect-sparkle-luxury-template-design-free-vector.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
+.aboutDiv {
+    width: 60%;
+    margin-top: 40PX;
+    align-items: center;
+    color: #E9E9E9;
+    padding: 40px;
+    background-color: #706F8E;
+    border-radius: 10px;
+}
+  
+  .about h2 {
+    color: #ADA9BA;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    background-color: #706F8E;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .about p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: bolder;
+  }
+  
+  .about ul {
+    list-style-type: circle;
+    padding: 0;
+    padding-left: 40px;
+  }
+  
+  .about li {
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+  
+  .about a {
+    color: #706F8E;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .about a:hover {
+    color: #ADA9BA;
+  }
+  
+  .about img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+  }

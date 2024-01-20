@@ -5,6 +5,7 @@ import Objects from './components/Objects';
 import React, { useState } from 'react';
 import './App.css';
 import Manager from './components/Manager';
+import About from './components/About';
 
 
 function App() {
@@ -49,6 +50,10 @@ function App() {
           <Route
             path="/manager"
             element={loggedInUser ? <Manager loggedInUser={loggedInUser} /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/about"
+            element={loggedInUser ? <About loggedInUser={loggedInUser} /> : <Navigate to="/" />}
           />
 
 
