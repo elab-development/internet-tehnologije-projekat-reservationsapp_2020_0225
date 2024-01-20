@@ -1,6 +1,7 @@
 import { BrowserRouter,Route,Routes, Navigate  } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import NavBar from './components/NavBar';
+import Objects from './components/Objects';
 import React, { useState } from 'react';
 import './App.css';
 
@@ -40,6 +41,11 @@ function App() {
             path="/"
             element={loggedInUser ? <Navigate to="/objects" /> : <LoginPage onLogin={handleLogin} />}
           />
+          <Route 
+            path="/objects" 
+            element={<Objects  criteria={searchCriteria} loggedInUser={loggedInUser} />} 
+          />
+
 
           
         </Routes>

@@ -1,0 +1,86 @@
+.objectsfeed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: transparent;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/017/320/806/original/abstract-elegant-black-background-with-golden-line-and-lighting-effect-sparkle-luxury-template-design-free-vector.jpg");
+    background-repeat: repeat;
+    height: 1100px;
+    background-size: cover;
+  }
+
+  .objectspage {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/017/320/806/original/abstract-elegant-black-background-with-golden-line-and-lighting-effect-sparkle-luxury-template-design-free-vector.jpg");
+    background-repeat: repeat;
+    height: 1100px;
+    background-size: cover;
+    
+  }
+  
+  .object {
+    background-color: white;
+    margin-bottom: 20px;
+    margin: 30px;
+    padding: 10px;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .object-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .object-text {
+    margin-bottom: 10px;
+  }
+  
+  .object-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .object-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  
+  .review-input {
+    width: 95%;
+    margin-top: 10px;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E9E9E9;
+  }
+  
+  .pagination p {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #706F8E; 
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ADA9BA; /* boja pozadine dugmeta */
+    color: white; /* boja teksta na dugmetu */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button.active {
+    background-color: #706F8E; /* boja pozadine aktivnog dugmeta */
+  }
