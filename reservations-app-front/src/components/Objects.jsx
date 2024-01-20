@@ -2,6 +2,7 @@ import React from 'react';
 import Object from './Object';
 import '../CSS/Objects.css';
 import ListOfObjects from './ListOfOBjects';
+import Footer from './Footer';
 
 function Objects({ loggedInUser, criteria }) {
   const postsPerPage = 2;
@@ -53,6 +54,7 @@ function Objects({ loggedInUser, criteria }) {
           </button>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
