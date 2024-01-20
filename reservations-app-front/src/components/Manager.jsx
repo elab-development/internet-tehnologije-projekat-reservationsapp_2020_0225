@@ -73,7 +73,7 @@ function Manager({ loggedInUser }) {
            
                 <div className="new-object">
                 {/* Forma za unos novog objekta */}
-                <h3>Novi Object</h3>
+                <h3>KREIRANJE NOVOG OBJEKTA:</h3>
                 <form
                     onSubmit={(e) => {
                     e.preventDefault();
@@ -85,7 +85,7 @@ function Manager({ loggedInUser }) {
                     <label htmlFor="name">Unesi naziv objekta:</label>
                     <input type="name" name="name" id="name" placeholder="Unesite naziv objekta" />
 
-                    <button type="submit">Dodaj novi object</button>
+                    <button type="submit">ADD NEW OBJECT</button>
                 </form>
                 </div>
               {objects.map((object, index) => (

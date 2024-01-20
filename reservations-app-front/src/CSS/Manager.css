@@ -12,7 +12,7 @@
   }
   
   h2 {
-    color: #6a0572;
+    color: #393A5A;
     font-size: 24px;
     margin-bottom: 20px;
     display: block;
@@ -72,7 +72,8 @@
   
   
   .new-object button[type="submit"] {
-    background-color: #aaa2d8;
+    background-color: #ADA9BA;
+    margin-left: 20px;
     color: white;
     border: none;
     border-radius: 4px;
@@ -82,7 +83,7 @@
   }
   
   .new-object button[type="submit"]:hover {
-    background-color: #604d9e;
+    background-color: #706F8E;
   }
 
   .objects{
