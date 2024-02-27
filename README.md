@@ -3,7 +3,7 @@
 
 Reservations App je sveobuhvatna platforma za rezervaciju različitih tipova objekata, uključujući barove, klubove, restorane, poglede, sobe za sastanke i sportske sale. Ova aplikacija pojednostavljuje proces rezervacije i omogućava menadzerima objekata uvid  I manipulaciju njihovim objektima, kao I mogućnost kontaktiranja drugih menadzera.
 
-![Opis slike](https://s9.gifyu.com/images/SFFY5.gif)
+![GIF](https://s9.gifyu.com/images/SFFY5.gif)
 
 Menadzeri objekata imaju mogućnost postavljanja svojih ponuda(objekata) u vezi sa rezervacijama, pružajući detaljne informacije o lokaciji, ceni, opisu, slikama i kontakt podacima. Korisnici, s druge strane, mogu lako pretraživati dostupne objekte i vršiti rezervacije putem aplikacije. Pretrazivanje je moguće vrsiti putem pretrage naziva ili pretrage objekata po tipu, a postoje i dodatne mogućnosti sortiranja i pretrage objekata.
 
