@@ -1,6 +1,6 @@
 import { BaseKey } from '@pankod/refine-core';
 
-//ManagerCardProp definiše koncerte koji su dostupni u komponenti ManagerCard. 
+//ManagerCardProp definiše atribute koji su dostupni u komponenti ManagerCard. 
 //Ova komponenta se koristi za prikaz informacija o jednom menadzeru.
 export interface ManagerCardProp {
     id?: BaseKey | undefined,
@@ -10,8 +10,8 @@ export interface ManagerCardProp {
     noOfObjects: number
 }
 
-//InfoBarProps definiše koncerte za komponentu InfoBar. 
-//Ova komponenta se koristi za prikazivanje informacija o kompaniji ili o nekom koncertu
+//InfoBarProps definiše atribute za komponentu InfoBar. 
+//Ova komponenta se koristi za prikazivanje informacija o kompaniji ili o nekom objektu
 export interface InfoBarProps {
     icon: ReactNode,
     name: string

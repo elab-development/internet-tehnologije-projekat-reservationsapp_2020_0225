@@ -41,22 +41,48 @@ function checkImage(url: any) {
 const ObjectDetails = () => {
 
     //Za zvezdice
+    //Ovaj kod se koristi za kreiranje interaktivnog sistema 
+    //ocenjivanja zvezdica (rating) na veb stranici ili u aplikaciji.
+    // U prvom redu, koristi se React hook useState kako bi se pratilo stanje ocene (rating).
+    // Početna vrednost ocene postavljena je na 0, a setRating funkcija će se koristiti za ažuriranje ocene.
+    //Zatim, koristi se još jedan React hook useState kako bi se pratilo stanje boje ocene (rateColor).
+    // Početna vrednost boje postavljena je na 0, a setColor funkcija će se koristiti za ažuriranje boje.
+
     const [rating, setRating] = useState<number>(0);
     const [rateColor, setColor] = useState<number>(0);
 
+///////////////////////////////////////////////////////////////////////////////////
+    //Za Konfete animaciju
+    //Ovaj kod omogućava pokretanje animacije konfeta postavljanjem vrednosti
+    // isCelebrating na true, a zatim se automatski zaustavlja nakon 5 sekundi,
+    // simulirajući efekat slavlja koji traje određeno vreme.
+
+
+
+    //Prvi deo koda koristi React hook useState kako bi pratio trenutno stanje animacije.
+    // Varijabla isCelebrating određuje da li je animacija trenutno aktivna ili ne,
+    // a setCelebrating funkcija omogućava ažuriranje tog stanja.
     const [isCelebrating, setCelebrating] = useState(false);
 
+    //Zatim, koristi se React hook useEffect kako bi se definisala
+    // funkcionalnost koja će se izvršiti nakon svakog renderovanja komponente,
+    // ali samo kada se vrednost isCelebrating promeni.
     useEffect(() => {
-        // Reset the celebration after a delay (e.g., 5 seconds)
+   //U okviru useEffect-a, postavlja se tajmer (setTimeout) 
+   //koji će nakon 5000 milisekundi (5 sekundi) pozvati funkciju 
+   //koja će postaviti vrednost isCelebrating na false, čime se završava animacija.
         const resetCelebration = setTimeout(() => {
             setCelebrating(false);
         }, 5000);
 
-        // Cleanup the timeout to avoid memory leaks
+//Na kraju, funkcija vraćena iz useEffect-a koristi clearTimeout 
+//kako bi očistila tajmer ukoliko se komponenta unmount-uje pre 
+//nego što istekne vreme. Ovo pomaže u sprečavanju curenja resursa (memory leak)
+// i neželjenog ponašanja kada korisnik napusti stranicu ili komponentu pre nego što animacija završi.
         return () => clearTimeout(resetCelebration);
     }, [isCelebrating]);
 
-
+////////////////////////////////////////////////////////////////////////////////
 
 //authProvider objekat koji se koristi u React aplikacijama za upravljanje autentikacijom korisnika.
 // Objekat ima pet funkcija: login, logout, checkError, checkAuth i getUserIdentity.
@@ -181,10 +207,10 @@ const ObjectDetails = () => {
    
 
 
-    {/*za brisanje koncerta*/}
-    //handleDeleteObject() funkcija se poziva kada korisnik klikne na dugme za brisanje koncerta.
+    {/*za brisanje objekta*/}
+    //handleDeleteObject() funkcija se poziva kada korisnik klikne na dugme za brisanje objekta.
     // U ovoj funkciji se prikazuje prozor za potvrdu brisanja, a ako korisnik potvrdi brisanje, poziva 
-    //se funkcija mutate() koja briše koncert. U slučaju uspešnog brisanja, korisnik se preusmerava na stranicu sa listom koncerta.
+    //se funkcija mutate() koja briše objekat. U slučaju uspešnog brisanja, korisnik se preusmerava na stranicu sa listom objekta.
     const handleDeleteObject = () => {
         const response = confirm(
             "Are you sure you want to delete this object?",
@@ -209,7 +235,20 @@ const ObjectDetails = () => {
 
 
 
- //Za zvezdiceS
+ //Za zvezdice
+//kreira niz sa pet elemenata (5 zvezdica) pomoću map funkcije.
+// Svaka zvezdica ima svoj indeks i povezanu funkcionalnost.
+// Trenutna ocena za datu zvezdicu određuje se pomoću indeksa + 1, jer ocene kreću od 1.
+//Nakon toga, definiše se funkcija handleRatingClick koja postavlja ocenu na trenutnu
+// ocenu kada korisnik klikne na zvezdicu. Svaka zvezdica je obavijena label elementom,
+// a postavke kao što su kursor i pozicija se primenjuju stilizacijom.
+//Za svaku zvezdicu se dodaje nevidljiva radio input komponenta postavljena izvan ekrana.
+// Kada se klikne na zvezdicu, input mijenja vrednost i aktivira onChange događaj koji postavlja ocenu.
+//Sledeći korak je prikazivanje FontAwesome ikone zvezdice (FaStar) sa odgovarajućom veličinom i bojom.
+// Boja zvezdice zavisi od trenutne ocene i boje ocene. 
+//Ako je trenutna ocena manja ili jednaka od boje ocene (ako je postavljena),
+// zvezdica će biti obojena u žutu (#F0E68C), inače će biti siva.
+
     const starsArray = [...Array(5)].map((star, index) => {
         const currentRate = index + 1;
 
@@ -529,7 +568,7 @@ const ObjectDetails = () => {
 
                         </Stack>
                     </Stack>
-
+                    {/*iframe element za ugradnju Google mape na veb stranicu i za dinamicku implementaciju lokacije vezane za odredjeni objekat*/}
                     <Stack>
                     <div style={{ width: '100%' }}>
                     <iframe
@@ -537,6 +576,7 @@ const ObjectDetails = () => {
                         height="400"
                         frameBorder="0"
                         scrolling="no"
+                        // Embedovanje Google mape sa određenom lokacijom (ObjectDetails.location) i dodatnim parametrima kao što su zoom nivo, markiranje tačke na mapi, i sl.
                         src={`https://maps.google.com/maps?q=${encodeURIComponent(ObjectDetails.location)}&t=&z=14&ie=UTF8&iwloc=B&output=embed&markers=color:red%7Clabel:P%7C${encodeURIComponent(ObjectDetails.location)}`}
                         style={{ width: '100%', height: '400px', border: "3px solid #334257" , borderRadius: 10, objectFit: "cover"}}
                         allowFullScreen
@@ -555,6 +595,7 @@ const ObjectDetails = () => {
                             color="#FCFCFC"
                             fullWidth
                             handleClick ={ () => {
+                                //Ukljucuje se animacija konfeta
                                 setCelebrating(true);
                                 alert('Object has been booked!');
                               }}

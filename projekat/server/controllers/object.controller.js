@@ -31,7 +31,7 @@ const getAllObjects = async (req, res) => {
         query.objectType = objectType;
     }
 
-    // Pronađeni koncerti se dodaju u "query" objekat
+    // Pronađeni objekti se dodaju u "query" objekat
     if(title_like){
         query.title = {$regex: title_like, $options: 'i' };
     }
@@ -40,7 +40,7 @@ const getAllObjects = async (req, res) => {
         //countDocuments funkcija da bi se izbrojao broj pronađenih koncerata pre slanja upita bazi podataka
         const count = await Object.countDocuments({query});
 
-        //vracaju se koncerti na osnovu zahteva,ogranicenje broja rezultata i da li ima preskakanje, i sortiranje
+        //vracaju se objekti na osnovu zahteva,ogranicenje broja rezultata i da li ima preskakanje, i sortiranje
         const objects = await Object
             .find(query)
             .limit(_end)
@@ -50,7 +50,7 @@ const getAllObjects = async (req, res) => {
         // uključuje se informacija o ukupnom broju pronađenih koncerata
         res.header('x-total-count', count);
         res.header('Access-Control-Expose-Headers', 'x-total-count');
-        //sve pronađene koncerti se šalju kao JSON odgovor klijentskoj aplikaciji.
+        //sve pronađene objekti se šalju kao JSON odgovor klijentskoj aplikaciji.
         res.status(200).json(objects);
     } catch (error) {
         res.status(500).json({message:error.message}) 
@@ -60,12 +60,12 @@ const getAllObjects = async (req, res) => {
 const getObjectDetails = async (req, res) => {
     //iz parametara zahteva se izdvaja id
     const { id } = req.params;
-    //da se nadje taj koncert sa tim id-em
+    //da se nadje taj objekat sa tim id-em
     const objectExists = await Object.findOne({
         _id: id
-    }).populate('creator',); //da se prikaze i kreator koncerta
+    }).populate('creator',); //da se prikaze i kreator objekta
 
-    //salje odgovor sa detaljima koncerta
+    //salje odgovor sa detaljima objekta
     if(objectExists) { res.status(200).json(objectExists) 
     }else{
         res.status(404).json({ message: 'Object not found'});
@@ -75,7 +75,7 @@ const getObjectDetails = async (req, res) => {
 const createObject = async (req, res) => {
 
     try {
-        //req.body sadrži parametre za kreiranje koncerta koje je korisnik poslao preko HTTP zahteva.
+        //req.body sadrži parametre za kreiranje objekta koje je korisnik poslao preko HTTP zahteva.
         const {title, description, objectType, location, price, photo, email} = req.body;
 
     //zapocinje se nova transakcija u bazi podataka
@@ -87,7 +87,7 @@ const createObject = async (req, res) => {
 
     if(!user) throw new Error('User not found');
 
-    //servis da bi se slika koncerta postavila na mrežu i dobila javni URL.
+    //servis da bi se slika objekta postavila na mrežu i dobila javni URL.
     const photoUrl = await cloudinary.uploader.upload(photo);
 
     //novu instanca Object modela, koja se zatim dodaje u bazu podataka. 
@@ -100,7 +100,7 @@ const createObject = async (req, res) => {
         photo: photoUrl.url,
         creator: user._id
     });
-    // ID nove koncerta u listu svih koncerata korisnika. Zatim se ovo ažuriranje čuva u bazi podataka.
+    // ID novog objekta u listu svih koncerata korisnika. Zatim se ovo ažuriranje čuva u bazi podataka.
     user.allObjects.push(newObject._id);
     await user.save({ session });
 
@@ -115,12 +115,12 @@ const createObject = async (req, res) => {
    
 
 };
-//editovanje koncerta
+//editovanje objekta
 const updateObject = async (req, res) => {
     try {
         //koji se menja
         const {id} = req.params;
-        //req.body sadrži parametre za kreiranje koncerta koje je korisnik poslao preko HTTP zahteva.
+        //req.body sadrži parametre za kreiranje objeata koje je korisnik poslao preko HTTP zahteva.
         const {title, description, objectType, location, price, photo} = req.body;
 
         const photoUrl = await cloudinary.uploader.upload(photo);
@@ -144,16 +144,16 @@ const updateObject = async (req, res) => {
 };
 
 
-//brisanje koncerta
+//brisanje objekta
 const deleteObject = async (req, res) => {
     try {
-        //koji koncert se brise
+        //koji objekat se brise
         const { id } = req.params;
 
-        //koristi za pronalaženje koncerta u bazi
+        //koristi za pronalaženje objekta u bazi
         const objectToDelete = await Object.findById({
             _id: id
-        }).populate('creator'); //učitali podaci korisnika koji je kreirao koncert
+        }).populate('creator'); //učitali podaci korisnika koji je kreirao objekat
 
         if(!objectToDelete) throw new Error('Object not found'); //ako ne postoji
 
@@ -161,9 +161,9 @@ const deleteObject = async (req, res) => {
         const session = await mongoose.startSession();
         session.startTransaction();
 
-        //Uklanjanje koncerta iz baze podataka koristeći remove funkciju 
+        //Uklanjanje objekta iz baze podataka koristeći remove funkciju 
         objectToDelete.remove({session});
-        //uklanja referenca na koncert kod korisnika sa pull funkcijom
+        //uklanja referenca na objekat kod korisnika sa pull funkcijom
         objectToDelete.creator.allObjects.pull(objectToDelete);
 
         //Ažuriranje korisničkog objekta u bazi podataka kako bi se uklonila referenca

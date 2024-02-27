@@ -14,7 +14,7 @@ import{
  
 
 const Home = () => {
-    {/*za vracanje koncerta koristimo ovu kuku */}
+    {/*za vracanje objekta koristimo ovu kuku */}
     const {data, isLoading, isError} = useList({
         resource:'objects',
         config: {

@@ -158,7 +158,7 @@ const AllObjects = () => {
     const logicalFilters = filters.flatMap((item) => ('field' in item ? item : []))
 
     return {
-      //currentFilterValues omogućava filtriranje po nazivu koncerta i tipu imovine.
+      //currentFilterValues omogućava filtriranje po nazivu objekta i tipu imovine.
       // Ako filter ne postoji, koristi se podrazumevana vrednost ''.
       title: logicalFilters.find((item) => item.field === 'title')?.value || '',
       objectType: logicalFilters.find((item) => item.field === 'objectType')?.value || '',
@@ -202,7 +202,7 @@ const AllObjects = () => {
                       }}
                       style={{ backgroundColor: 'white', borderRadius: '8px', border:'none'}}
                     />
-                    {/* pretraga po tipu koncerta*/}
+                    {/* pretraga po tipu objekta*/}
                     <Select
                       variant="outlined"
                       color="info"
@@ -222,7 +222,7 @@ const AllObjects = () => {
                   }}
                   style={{ backgroundColor: 'white', borderRadius: '8px', border:'none'}}
                     >
-                      {/*padajuca lista za tip koncerta, mapira jedan po jedan i prikazuje u meniju malim slovima*/}
+                      {/*padajuca lista za tip objekta, mapira jedan po jedan i prikazuje u meniju malim slovima*/}
                       <MenuItem value="">All</MenuItem>
                       {['Bars', 'Clubs', 'Restaurants', 'Rooftops', 'Meeting rooms', 'Sports halls'].map((type) => (
                           <MenuItem key={type} value={type}>{type}</MenuItem>

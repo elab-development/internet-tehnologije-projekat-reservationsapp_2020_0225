@@ -12,7 +12,7 @@ import{
  
 
 const AdminHome = () => {
-    {/*za vracanje koncerta koristimo ovu kuku */}
+    {/*za vracanje objekata koristimo ovu kuku */}
     const {data, isLoading, isError} = useList({
         resource:'objects',
         config: {
