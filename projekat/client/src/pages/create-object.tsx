@@ -4,14 +4,13 @@ import { useGetIdentity } from '@pankod/refine-core';
 
 import { FieldValues, useForm } from '@pankod/refine-react-hook-form';
 
-import { useNavigate } from '@pankod/refine-react-router-v6';
 
 import Form from 'components/common/Form'
 
 
 const CreateObject = () => {
 
-  const navigate = useNavigate();
+  
   const { data : user } = useGetIdentity();
   const [objectImage, setObjectImage] = useState({name: '', url: ''});
   //useForm je hook koji se koristi u Refine aplikacijama kako bi se kreirao i validirao formular.

@@ -49,6 +49,8 @@ const getAllObjects = async (req, res) => {
 
         // uključuje se informacija o ukupnom broju pronađenih koncerata
         res.header('x-total-count', count);
+        //Vezano za CORS politiku! Dozvoljava klijentskoj pristup x-total-count, tj.
+        // informaciji o ukupnom broju podataka sto je korisno za paginaciju!
         res.header('Access-Control-Expose-Headers', 'x-total-count');
         //sve pronađene objekti se šalju kao JSON odgovor klijentskoj aplikaciji.
         res.status(200).json(objects);

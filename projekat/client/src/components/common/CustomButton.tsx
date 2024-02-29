@@ -1,4 +1,4 @@
-import { Button, textTransform } from "@pankod/refine-mui";
+import { Button} from "@pankod/refine-mui";
 
 import { CustomButtonProps } from "interfaces/common";
 

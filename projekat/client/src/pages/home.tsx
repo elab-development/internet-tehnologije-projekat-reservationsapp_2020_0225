@@ -1,6 +1,6 @@
 import { useList } from '@pankod/refine-core';
 
-import{ Typography, Box, Stack} from '@pankod/refine-mui'
+import{ Typography, Box} from '@pankod/refine-mui'
 import { reservations_app } from 'assets';
 import myImage from '../assets/object13.jpg'; 
 import myImage2 from '../assets/object12.jpg';

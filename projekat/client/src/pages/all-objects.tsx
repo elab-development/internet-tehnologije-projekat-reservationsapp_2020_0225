@@ -11,15 +11,18 @@ import { useMemo } from "react";
 import { ObjectCard, CustomButton } from "components";
 
 //za autentifikaciju
-import { Refine, AuthProvider } from "@pankod/refine-core";
+import {  AuthProvider } from "@pankod/refine-core";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
-import React, { useState } from "react";
+
 
 
 const AllObjects = () => {
+
+
+///////////ADMIN DEO//////////////////
 
 //authProvider objekat koji se koristi u React aplikacijama za upravljanje autentikacijom korisnika.
 // Objekat ima pet funkcija: login, logout, checkError, checkAuth i getUserIdentity.
@@ -115,6 +118,9 @@ const AllObjects = () => {
   };
 //kreranje promenjive isAdmin samo ukoliko je u bazi data kolona true
   const isAdmin = localStorage.getItem("isAdmin") === "true";
+/////////////////KRAJ ADMIN DELA///////////////////////////////////////////////////////
+
+
 
 
 //za preusmeravanje na druge stranice u aplikaciji
@@ -245,7 +251,7 @@ const AllObjects = () => {
       >
         
         {isAdmin ? null : (
-          <CustomButton
+          <CustomButton 
             title="Add Object"
             //vodi na novu stranicu za kreiranje
             handleClick={() => navigate('/objects/create')}

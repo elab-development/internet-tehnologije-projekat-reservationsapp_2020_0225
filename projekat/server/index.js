@@ -10,6 +10,11 @@ import objectRouter from './routes/object.routes.js';
 
 dotenv.config();
 
+//CORS (Cross-Origin Resource Sharing) politika je sigurnosni mehanizam koji
+// se primenjuje u veb pregledačima kako bi ograničio veb stranice da zahtevaju resurse
+// (npr. podatke ili skripte) sa drugih domena, osim ako taj drugi domen eksplicitno dozvoljava
+// takve zahteve. Ovaj mehanizam je uveden radi zaštite korisnika od potencijalno opasnih veb
+// stranica koje pokušavaju pristupiti resursima sa drugih domena bez odgovarajuće dozvole.
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));

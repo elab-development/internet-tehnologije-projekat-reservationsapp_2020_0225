@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "@pankod/refine-react-router-v6";
 import Confetti from 'react-confetti';
 
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 
 
 import {
@@ -84,6 +84,8 @@ const ObjectDetails = () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////ADMIN/////////////////////
 //authProvider objekat koji se koristi u React aplikacijama za upravljanje autentikacijom korisnika.
 // Objekat ima pet funkcija: login, logout, checkError, checkAuth i getUserIdentity.
     const authProvider: AuthProvider = {
@@ -181,7 +183,7 @@ const ObjectDetails = () => {
       };
     //kreranje promenjive isAdmin samo ukoliko je u bazi data kolona true
       const isAdmin = localStorage.getItem("isAdmin") === "true";
-
+//////////////////////////////////////KRAJ ADMINA////////////////////////////////////////////////////////////
 
     const navigate = useNavigate();
     const { data: user } = useGetIdentity();
@@ -273,6 +275,13 @@ const ObjectDetails = () => {
             </label>
         );
     });
+
+///////////////////////////KRAJ ZVEZDICA//////////////////////////////////////
+
+
+
+
+
 
     return (
         <Box
